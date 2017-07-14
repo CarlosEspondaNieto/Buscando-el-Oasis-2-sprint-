@@ -16,7 +16,7 @@ Teradata soporta los siguientes tipos de ambiente:
 
 ## Pipeline Parallelism
 Pipeline Parallelism, se logra conectando intancias de operadores atraves de flujos de datos durante un sólo job.
-![alt text](https://github.com/CarlosEspondaNieto/Buscando-el-Oasis-2-sprint-/tree/martha_ry/TPT/ 	piplineP.png)
+![alt text](https://github.com/CarlosEspondaNieto/Buscando-el-Oasis-2-sprint-/tree/martha_ry/TPT/piplineP.png)
 
 1.- El  operador de exportación de la izquierda extrae datos de un data source y escribe en el data stream.
 2.- El operador de filtación extrae dayos de data stream, los proces para después escribirlos en otro data stream.
@@ -26,6 +26,5 @@ Estos tres operadores corren su propio proceso, pueden operar independientemente
 
 ## Data Parallelism
 Muestra como se puede procesar una gran cantidada de datos, mediante la particion de los datos origen en un numero sets independientes, donde cada particion  es manejada por una instancia seperada de un operador.
-
 ![alt text](https://github.com/CarlosEspondaNieto/Buscando-el-Oasis-2-sprint-/tree/martha_ry/TPT/dataP.png)
 
