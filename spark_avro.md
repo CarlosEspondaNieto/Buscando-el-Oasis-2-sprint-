@@ -42,7 +42,7 @@ df.filter("doctor > 5").write.avro("/tmp/output") //ruta donde se van a guardar
 #### Convertir un archivo csv en avro desde HDFS
 -Se hizo un script que toma un csv de HDFS y lo guarda en local. 
 
-- Se ejecuta el shell de Scala con los paquetes necesarios (com.databricks.avro y com.databricks.csv) y se pasa como  parametro el archivo a ejecutar.
+- Se ejecuta el spark shell con los paquetes necesarios (com.databricks.avro y com.databricks.csv) y se pasa como  parametro el archivo a ejecutar.
 
 `sudo bin/spark-shell --packages com.databricks:spark-avro_2.10:2.0.1,com.databricks:spark-csv_2.10:1.5.0 script.scala`
  
@@ -72,7 +72,7 @@ System.exit(0) //Para salir del shell
 //df.write.avro("hdfs://localhost:9000/carlos/beeva_data")
 
 ```
-- Para comprobar, desde el shell de Scala: 
+- Para comprobar, vía spark shell: 
 
 ```Scala
 df.printSchema() // Para ver el esquema de la información
