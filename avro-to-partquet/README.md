@@ -4,7 +4,7 @@ Veremos como hacer la conversion de un archivo avro a formato parquet y enviarlo
 
 ## Importar la libreria de databricks
 ```
-bin/spark-shell --packages com.databricks:spark-avro_2.11:2.0.1
+bin/spark-shell --packages com.databricks:spark-avro_2.10:2.0.1
 ```
 
 * Una vez dentro del shell de spark, importaremos las siguientes librerias.
