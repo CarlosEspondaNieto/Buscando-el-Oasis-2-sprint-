@@ -45,6 +45,7 @@ df.filter("doctor > 5").write.avro("/tmp/output") //ruta donde se van a guardar
 - Se ejecuta el shell de Scala con los paquetes necesarios (com.databricks.avro y com.databricks.csv) y se pasa como  parametro el archivo a ejecutar.
 
 `sudo bin/spark-shell --packages com.databricks:spark-avro_2.10:2.0.1,com.databricks:spark-csv_2.10:1.5.0 script.scala`
+ 
  -Contenido del script:
 
 ```Scala
@@ -71,7 +72,8 @@ System.exit(0) //Para salir del shell
 //df.write.avro("hdfs://localhost:9000/carlos/beeva_data")
 
 ```
-- Para ver comprobar, desde el shell de Scala: 
+- Para comprobar, desde el shell de Scala: 
+
 ```Scala
 df.printSchema() // Para ver el esquema de la información
 df.show() // Para ver los primeros 20 registros
