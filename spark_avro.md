@@ -40,14 +40,15 @@ df.filter("doctor > 5").write.avro("/tmp/output") //ruta donde se van a guardar
 ```
 
 #### Convertir un archivo csv en avro desde HDFS
+-Se hizo un script que toma un csv de HDFS y lo guarda en local. 
+
+- Se ejecuta el shell de Scala con los paquetes necesarios (com.databricks.avro y com.databricks.csv) y se pasa como  parametro el archivo a ejecutar.
+
+`sudo bin/spark-shell --packages com.databricks:spark-avro_2.10:2.0.1,com.databricks:spark-csv_2.10:1.5.0 script.scala`
+ -Contenido del script:
+
 ```Scala
-//Cargar los paquetes de com.databricks.avro y com.databricks.csv en la aplicación 
-
-sudo bin/spark-shell --packages com.databricks:spark-avro_2.10:2.0.1,com.databricks:spark-csv_2.10:1.5.0 //tienen que ir separados por coma sin espacios
-
-
 //Se importan las bibliotecas
-
 import com.databricks.spark.avro._
 import org.apache.spark.sql.SQLContext
 
@@ -55,17 +56,25 @@ import org.apache.spark.sql.SQLContext
 val sqlContext = new SQLContext(sc)
 
 // Se carga el archivo csv desde el HDFS:
-val df = sqlContext.read.format("com.databricks.spark.csv").option("delimiter", "|").option("header", "false").option("inferSchema", "true").load("hdfs://localhost:9000/carlos/beeva_moock_data1.csv")
+val df = (sqlContext.read // Scala no tiene caracter para continuación de líneas, por eso se encierran en paréntesis.
+	.format("com.databricks.spark.csv")
+	.option("delimiter", "|") 
+	.option("header", "false")
+	.option("inferSchema", "true")
+	.load("hdfs://localhost:9000/landing_zone/teradata/beeva_moock_data1.csv") // se carga desde HDFS
+	.write.avro("/raw/beeva")) //Se guarda en formato avro en local
 
-//Se guarda en formato avro en local:
-df.write.avro("/raw/beeva_data")
+System.exit(0) //Para salir del shell
+
 
 //También se puede guardar en HDFS
-df.write.avro("hdfs://localhost:9000/carlos/beeva_data")
+//df.write.avro("hdfs://localhost:9000/carlos/beeva_data")
 
+```
+- Para ver comprobar, desde el shell de Scala: 
+```Scala
 df.printSchema() // Para ver el esquema de la información
 df.show() // Para ver los primeros 20 registros
 
 df.count() // Para contar los registros
-
 ```
