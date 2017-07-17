@@ -55,7 +55,7 @@ import org.apache.spark.sql.SQLContext
 val sqlContext = new SQLContext(sc)
 
 // Se carga el archivo csv desde el HDFS:
-val df = sqlContext.read.format("com.databricks.spark.csv").option("header", "false").option("inferSchema", "true").load("hdfs://localhost:9000/carlos/beeva_moock_data1.csv")
+val df = sqlContext.read.format("com.databricks.spark.csv").option("delimiter", "|").option("header", "false").option("inferSchema", "true").load("hdfs://localhost:9000/carlos/beeva_moock_data1.csv")
 
 //Se guarda en formato avro en local:
 df.write.avro("/raw/beeva_data")
@@ -63,5 +63,9 @@ df.write.avro("/raw/beeva_data")
 //También se puede guardar en HDFS
 df.write.avro("hdfs://localhost:9000/carlos/beeva_data")
 
+df.printSchema() // Para ver el esquema de la información
+df.show() // Para ver los primeros 20 registros
+
+df.count() // Para contar los registros
 
 ```
