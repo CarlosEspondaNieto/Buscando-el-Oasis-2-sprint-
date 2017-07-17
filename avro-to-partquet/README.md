@@ -9,9 +9,22 @@ bin/spark-shell --packages com.databricks:spark-avro_2.10:2.0.1
 
 * Una vez dentro del shell de spark, importaremos las siguientes librerias.
 ```scala
+//Importamos las librerias necesarias
 import com.databricks.spark.avro._
 import org.apache.spark.sql.SQLContext
+
+// Instanciamos un sqlCOntext
 val sqlContext = new SQLContext(sc)
-val df = sqlContext.read.avro("src/test/resources/episodes.avro")
-df.filter("doctor > 5").write.avro("/tmp/output")
+// Leemos el archivo .avro
+val avroDF = sqlContext.read.avro("src/test/be-datio/part-r-00000-d7bcd31a-c121-4809-bfa2-617b1e0253ee.avro")
+// Convertimos a parquet y leemos el archivo
+avroDF.write.parquet("src/test/parquet/out/archivo.parquet")
+val parqfile = sqlContext.read.parquet("src/test/parquet/out/pruebas.parquet")
+// Registramos la tabla
+parqfile.registerTempTable("pruebas")
+// Hacemos una consulta, imprimimos el esquema, hacemos un count y mostramos el primer registro
+records = sqlContext.sql("SELECT * FROM pruebas")
+records.printSchema()
+records.count()
+records.show()
 ```
