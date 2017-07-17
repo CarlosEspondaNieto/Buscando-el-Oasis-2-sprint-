@@ -38,4 +38,29 @@ val df = sqlContext.read.avro("file_path/episodes.avro")
 df.filter("doctor > 5").write.avro("/tmp/output")
 ```
 
+#### Convertir un archivo csv en avro desde HDFS
+```Scala
+//Cargar los paquetes de com.databricks.avro y com.databricks.csv en la aplicación 
 
+sudo bin/spark-shell --packages com.databricks:spark-avro_2.10:2.0.1,com.databricks:spark-csv_2.10:1.5.0 //tienen que ir separados por coma sin espacios
+
+
+//Se importan las bibliotecas
+
+import com.databricks.spark.avro._
+import org.apache.spark.sql.SQLContext
+
+// Se carga el SQLContext en una variable
+val sqlContext = new SQLContext(sc)
+
+// Se carga el archivo csv desde el HDFS:
+val df = sqlContext.read.format("com.databricks.spark.csv").option("header", "false").option("inferSchema", "true").load("hdfs://localhost:9000/carlos/beeva_moock_data1.csv")
+
+//Se guarda en formato avro en local:
+df.write.avro("/raw/beeva_data")
+
+//También se puede guardar en HDFS
+df.write.avro("hdfs://localhost:9000/carlos/beeva_data")
+
+
+```
