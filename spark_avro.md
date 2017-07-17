@@ -9,7 +9,7 @@
 
 - Descargar el archivo [episodes.avro](https://docs.databricks.com/_static/misc/episodes.avro)
 
--En el directorio de spark correr como sudo el shell de Scala junto con databrticks con la versión 2.0.1 de avro (por alguna razón, la version 2.0.0 no funciona bien):
+-En el directorio de spark correr como sudo el shell de Scala junto con databricks con la versión 2.0.1 de avro (por alguna razón, la version 2.0.0 no funciona bien):
 
 `sudo bin/spark-shell --packages com.databricks:spark-avro_2.10:2.0.1`
  
@@ -23,9 +23,10 @@ y agregar la línea: `export SPARK_LOCAL_IP='127.0.0.1' `
 
 -Ejecutar de nuevo el comando para entrar al shell.
 
--Importar las bibliotecas
+-Importar las bibliotecas y las siguientes líneas:
 
 ```Scala
+// import needed for the .avro method to be added
 import com.databricks.spark.avro._
 import org.apache.spark.sql.SQLContext
 
@@ -34,8 +35,8 @@ val sqlContext = new SQLContext(sc)
 // The Avro records get converted to Spark types, filtered, and
 // then written back out as Avro records
 
-val df = sqlContext.read.avro("file_path/episodes.avro")
-df.filter("doctor > 5").write.avro("/tmp/output")
+val df = sqlContext.read.avro("file_path/episodes.avro") // ruta donde se guardó el archivo episodes.avro
+df.filter("doctor > 5").write.avro("/tmp/output") //ruta donde se van a guardar
 ```
 
 #### Convertir un archivo csv en avro desde HDFS
