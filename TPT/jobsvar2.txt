@@ -3,8 +3,10 @@ SourceTdpId   = 'dbccop1'
 ,SourceUserPassword = 'tpt'  
 ,TargetFileName           = 'teradata_to_local.csv'
 ,TargetFormat             = 'Delimited'
+,TargetDirectoryPath      = '/root/hadoop/'
 ,TargetOpenMode           = 'Write'
 ,ExportInstances   = 1
 ,WriterInstances   = 1
 ,SelectorInstances = 1
+
 
