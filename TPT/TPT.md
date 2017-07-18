@@ -205,3 +205,11 @@ Job start: Mon Jul 17 23:02:05 2017
 Job end:   Mon Jul 17 23:02:14 2017
 ```
 
+# Mandando nuestro archivo a HDFS
+```
+hdfs dfs -put /root/hadoop/teradata_to_local.csv hdfs://martha:9000/tpt
+```
+* Ahora   vemos el contenido del archivo
+```
+hdfs dfs -cat hdfs://martha:9000/tpt/teradata_to_local.csv
+```
