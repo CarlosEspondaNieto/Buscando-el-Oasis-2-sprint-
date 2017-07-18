@@ -18,9 +18,9 @@ Teradata soporta los siguientes tipos de ambiente:
 Pipeline Parallelism, se logra conectando intancias de operadores atraves de flujos de datos durante un sólo job.
 ![piplineP](/TPT/piplineP.png)
 
-1.- El  operador de exportación de la izquierda extrae datos de un data source y escribe en el data stream.
-2.- El operador de filtación extrae dayos de data stream, los proces para después escribirlos en otro data stream.
-3.- El operador de carga  inicia a escribir los datos en el instante que estos están disponibles del data stream.
+1. El  operador de exportación de la izquierda extrae datos de un data source y escribe en el data stream.
+2. El operador de filtación extrae dayos de data stream, los proces para después escribirlos en otro data stream.
+3. El operador de carga  inicia a escribir los datos en el instante que estos están disponibles del data stream.
 Estos tres operadores corren su propio proceso, pueden operar independientemente y l mismo tiempo.
 
 
@@ -31,16 +31,16 @@ Muestra como se puede procesar una gran cantidada de datos, mediante la particio
 # Validando TPT después de la instalación 
 Recordando que ya tenemos TERADATA instalado el siguente link nos dice como: [INSTALACION DE TERADATA EN VWARE!](https://github.com/Dauzy/S1---Viaje-a-Jupyter/blob/carlos/teradata_instalacionVM.md) .
 * Creamos una base de datos y un usuario:
-´´´
+```
 CREATE DATABASE pruebas_tpt    AS PERMANENT =  500000;  
 CREATE USER tpt_u FROM pruebas_tpt AS PASSWORD = tpt , PERM = 500000;                     
-´´´
+```
 * Nos cambiamos al directorio /opt/teradata/client/16.00/tbuild/sample/validate y ejecutamos
-´´´
+```
 ./tptvalidate.ksh dbccop1 tpt_u tpt
-´´´
-Nos tiene que salir el siguiente mensaje
-´´´
+```
+* Nos tiene que salir el siguiente mensaje
+```
 Teradata Parallel Transporter Version 16.00.00.01 64-Bit
 Job log: /opt/teradata/client/16.00/tbuild/logs/qsetup1-40.out
 Job id is qsetup1-40, running on TDExpress16004_Sles11
@@ -168,16 +168,16 @@ Job qcleanup completed successfully
 Job start: Mon Jul 17 22:27:36 2017
 Job end:   Mon Jul 17 22:27:39 2017
 TPT Validation completed successfully.
-´´´
+```
 # Extracción de una tabla de ejemplo usando TPT
-´´´
+```
 tbuild -f export_d.txt  -v jobsvar2.txt -j exportt
-´´´
+```
 -f : job a ejecutar
 -v : variables
 -j : nombre del job
 La salida debe ser la siguiente
-´´´
+```
 Teradata Parallel Transporter Version 16.00.00.01 64-Bit
 Job log: /opt/teradata/client/16.00/tbuild/logs/exportt-51.out
 Job id is exportt-51, running on TDExpress16004_Sles11
@@ -202,6 +202,5 @@ Job step MAIN_STEP completed successfully
 Job exportt completed successfully
 Job start: Mon Jul 17 23:02:05 2017
 Job end:   Mon Jul 17 23:02:14 2017
-
-´´´
+```
 
