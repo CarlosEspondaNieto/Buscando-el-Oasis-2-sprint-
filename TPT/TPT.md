@@ -172,10 +172,11 @@ TPT Validation completed successfully.
 # Extracción de una tabla de ejemplo usando TPT
 ```
 tbuild -f export_d.txt  -v jobsvar2.txt -j exportt
-```
 -f : job a ejecutar
 -v : variables
 -j : nombre del job
+```
+
 La salida debe ser la siguiente
 ```
 Teradata Parallel Transporter Version 16.00.00.01 64-Bit
