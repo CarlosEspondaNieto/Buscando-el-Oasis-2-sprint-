@@ -1,0 +1,19 @@
+SourceTdpId   = 'dbccop1'
+,SourceUserName = 'tpt_u'
+,SourceUserPassword = 'tpt'  
+,TargetFileName           = 'teradata_to_local.csv'
+,TargetFormat             = 'Delimited'
+,TargetOpenMode           = 'Write'
+,HadoopHost               = 'martha'    
+,LoadInstances     = 1
+,UpdateInstances   = 1
+,ExportInstances   = 1
+,StreamInstances   = 1
+,InserterInstances = 1
+,SelectorInstances = 1
+,ReaderInstances   = 1
+,WriterInstances   = 1
+,OutmodInstances   = 1
+,ODBCOprInstances  = 1
+
+

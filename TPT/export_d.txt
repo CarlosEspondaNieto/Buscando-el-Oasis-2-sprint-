@@ -1,0 +1,92 @@
+/**************************************************************/
+/*                                                            */
+/* Copyright 2014, Teradata Corporation.                      */
+/* All Rights Reserved.                                       */
+/*                                                            */
+/* Script Name: PTS00016                                      */
+/* Description: This Teradata Parallel Transporter sample     */
+/*              script loads 10 rows from a teradata table    */
+/*              to flat file.                                 */
+/*                                                            */
+/**************************************************************/
+/*                                                            */
+/* Pre-requisite:                                             */
+/*                                                            */
+/*  Execute the script PTSTP001 to create sample data in      */
+/*  the source table.                                         */
+/*                                                            */
+/**************************************************************/
+/*                                                            */
+/* Explanation:                                               */
+/*                                                            */
+/* This script uses the Selector operator as producer and     */
+/* the DataConnector operator as consumer.                    */
+/*                                                            */
+/* This script shows how to use the following Teradata        */
+/* Parallel Transporter features:                             */
+/*                                                            */
+/* - Load the data from Teradata table to a flat file using   */
+/*   the TPT DataConnector operator, in delimited format.     */
+/*                                                            */
+/* - Using "job variables", which are defined in the external */
+/*   file "jobvars.txt". These variables can be used anywhere */
+/*   inside the job script by prepending the @ symbol to the  */
+/*   variable name.                                           */
+/*                                                            */
+/* - Support of data files created in Delimited format, even  */
+/*   when the source data is non-varchar.                     */
+/*                                                            */
+/**************************************************************/
+/*                                                            */
+/* Required customizations before executing this script:      */
+/*                                                            */
+/* Inside the file "jobvars.txt", modify the values for       */
+/* the following job variables:                               */
+/*                                                            */
+/*    TargetTdpId, TargetUserName, TargetUserPassword         */
+/*                                                            */
+/* where                                                      */
+/*                                                            */
+/*    TargetTdpId        - Name of the TD database system.    */
+/*                                                            */
+/*    TargetUserName     - Logon UserName to logon to         */
+/*                         Teradata database                  */
+/*                                                            */
+/*    TargetUserPassword - Logon Password to logon to         */
+/*                         Teradata database                  */
+/*                                                            */
+/**************************************************************/
+/* Execution:                                                 */
+/*                                                            */
+/* On Unix and Windows, use the following command to execute  */
+/* this script:                                               */
+/*                                                            */
+/*    tbuild -f PTS00016 -v jobvars.txt -j PTS00016           */
+/*                                                            */
+/* For executing this script in mainframes, use the           */
+/* accompanying JCL.                                          */
+/*                                                            */
+/**************************************************************/
+
+DEFINE JOB exportt
+DESCRIPTION 'Export rows from a Teradata table to a delimited file'
+(
+
+  DEFINE SCHEMA TARGET_EMP_TABLE
+    (
+       NAME_P  VARCHAR(50),
+       ADDRESS VARCHAR(100),
+	MAIL VARCHAR(50)
+       
+     );
+
+  APPLY TO OPERATOR ($FILE_WRITER()[@WriterInstances] ATTR (FileName = 'teradata_to_local.csv') )
+  SELECT * FROM OPERATOR ($EXPORT(TARGET_EMP_TABLE)[@SelectorInstances] ATTR ( 
+
+      SelectStmt             = 'select * from TARGET_EMP_TABLE;'
+   )
+
+
+  ); 
+);
+
