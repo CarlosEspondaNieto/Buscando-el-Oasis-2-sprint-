@@ -206,6 +206,7 @@ Job end:   Mon Jul 17 23:02:14 2017
 ```
 
 # Mandando nuestro archivo a HDFS
+Recordemos que ya habíamos configurado HDFS EN  nustra maquina virtual [CONFIGURACIÓNDE HDFS](https://github.com/Dauzy/S1---Viaje-a-Jupyter/blob/master/configuracionEdgeNodeHDFS.md)
 ```
 hdfs dfs -put /root/hadoop/teradata_to_local.csv hdfs://martha:9000/tpt
 ```
