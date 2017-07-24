@@ -1,4 +1,4 @@
-###Mongo
+### Mongo
 
 - Desde la versión 3.4 el storage engine default de mongo es wiredTiger
 
