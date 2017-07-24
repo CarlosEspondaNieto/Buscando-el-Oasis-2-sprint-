@@ -1,6 +1,6 @@
 ## Definición de instancias con Confluent
 
--Lo que viene a continuación se hizo en la máquina de cada uno. 
+- Lo que viene a continuación se hizo en la máquina de cada uno. 
 
 #### Se instaló Confluent:
 
@@ -17,7 +17,7 @@
 
 ##### Configuraciónde zookeeper:
  
--Editar el archivo etc/kafka/zookeeper.properties:
+- Editar el archivo etc/kafka/zookeeper.properties:
  
 ```
 # the directory where the snapshot is stored.
@@ -46,7 +46,7 @@ echo "1" > /tmp/zookeeper/myid
 
 ```
 
--Editar el archivo `etc/kafka/server.properties`:
+- Editar el archivo `etc/kafka/server.properties`:
 
 ```bash
 The id of the broker. This must be set to a unique integer for each broker.
@@ -75,11 +75,11 @@ zookeeper.connect=0.0.0.0:2181,ip_nodo_2:2181,ip_nodo_3:2181
 
 `bin/zookeeper-server-start.sh config/zookeeper.properties`
 
--Iniciar los servicios del broker en cada máquina:
+- Iniciar los servicios del broker en cada máquina:
 
 `bin/kafka-server-start.sh config/server.properties`
 
--En una de las máquinas crear un  tópic:
+- En una de las máquinas crear un  tópic:
 
 ```
       bin/kafka-topics.sh --create --zookeeper 0.0.0.0:2181, \ 
@@ -91,14 +91,15 @@ zookeeper.connect=0.0.0.0:2181,ip_nodo_2:2181,ip_nodo_3:2181
 
 - Levantar un productor en una máquina y un consumidor en las dos restantes:
 
-    ```
- bin/kafka-console-producer.sh --broker-list  0.0.0.0:9092,\
+```
+bin/kafka-console-producer.sh --broker-list  0.0.0.0:9092,\
 
-     ip_nodo_2:9092,ip_nodo_3:9092 --topic prueba \
+ip_nodo_2:9092,ip_nodo_3:9092 --topic prueba \
 
-  bin/kafka-console-consumer.sh --zookeeper0.0.0.0:9092,\ 
+bin/kafka-console-consumer.sh --zookeeper0.0.0.0:9092,\ 
 
-     ip_nodo_2:9092,ip_nodo_3:9092  --topic prueba --from-beginning
+ip_nodo_2:9092,ip_nodo_3:9092  --topic prueba --from-beginning
+
 ```
 
 -Confirmar que los tres nodos con sus brokers están arriba:
@@ -125,7 +126,8 @@ Topic:prueba  PartitionCount:1    ReplicationFactor:3 Configs:
 
    ps -aux | grep Zookeeper
 ```
--Tirarlos:
+
+- Tirarlos:
 
 ```
 sudo kill -9 pid --> id del proceso de kafka
@@ -149,7 +151,7 @@ sudo kill -9 pid --> id del proceso de kafka```
 
 `Enviando mensaje ...`
 
--Confirmar que solo un nódo está arriba:
+- Confirmar que solo un nódo está arriba:
 
 ```
 bin/kafka-topics --describe --zookeeper  ip_broker_vivo:9092  --topic prueba
