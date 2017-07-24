@@ -1,4 +1,11 @@
 # Instalar conector de mongo.
+
+¿Que es un conector?
+Para copiar datos entre Apache Kafka y otro sistema de datos se necesita una instancia de kafka connectors, la cual pude extraer o enviar datos a los sistemas de datos.
+
+#### Source y Sink connectors
+Source conector basicamente nos sirve para importar datos de otros sistemas y Sink connector el cual exporta datos de kafka a otro sistema de datos.
+
 Para este tutorial se requiere tener instalado confluent-3.1.1 y mongo en su version 3.2 o superior. Haremos uso del conector de [datamountaineer v0.2.4](http://docs.datamountaineer.com/en/0.2.4/install.html#install)
 
 ### Set-up
@@ -13,14 +20,14 @@ $ sudo ./bin/zookeeper-server-start ./e/kafka/zookeeper.properties
 ```
 * Iniciamos el servidor de kafka.
 ```
-$ ./bin/schema-registry-start ./etc/schema-registry/schema-registry.properties
+$ ./bin/kafka-server-start ./etc/kafka/server.properties 
 ```
 * Iniciamos el *schema-registry* ya que haremos uso de el.
 ```
 $ ./bin/schema-registry-start ./etc/schema-registry/schema-registry.properties
 ```
 
-### Vamo' a por ello
+### Configuracion
 
 Una vez descargados y dezempaquetado stream reactor iniciamos nuestro conector.
 * Nos dirigimos dentro de la carpeta e iniciamos el conector.
