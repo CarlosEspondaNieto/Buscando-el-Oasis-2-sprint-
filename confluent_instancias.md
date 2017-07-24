@@ -137,15 +137,18 @@ sudo kill -9 pid  --> id del proceso zookeeper
 
 - Tumbar zokeeper en otra máquina, dejando sólo el broker, dejando el consumer arriba.
 
-```ps -aux | grep Zookeeper
+```
+ps -aux | grep Zookeeper
 
 sudo kill -9 pid  --> id del proceso zookeeper
 ```
 - Tumbar broker en otra máquina, dejando solo el zookeeper, dejando el producer arriba.
 
-```ps -aux | grep kafka
+```
+ps -aux | grep kafka
 
-sudo kill -9 pid --> id del proceso de kafka```
+sudo kill -9 pid --> id del proceso de kafka
+```
 
 - Enviar mensaje para confirmar que los consumers reciben aún.
 
