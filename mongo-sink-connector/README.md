@@ -13,6 +13,7 @@ Para este tutorial se requiere tener instalado confluent-3.1.1 y mongo en su ver
 ```
 $ mkdir stream-reactor
 $ tar xvf stream-reactor-0.2.4-3.1.1.tar.gz -C stream-reactor
+$ export CONFLUENT_HOME=~/confluent/confluent-3.1.1
 ```
 * Iniciamos nuestro zookeeper.
 ```
@@ -20,7 +21,7 @@ $ sudo ./bin/zookeeper-server-start ./e/kafka/zookeeper.properties
 ```
 * Iniciamos el servidor de kafka.
 ```
-$ ./bin/kafka-server-start ./etc/kafka/server.properties 
+$ ./bin/kafka-server-start ./etc/kafka/server.properties
 ```
 * Iniciamos el *schema-registry* ya que haremos uso de el.
 ```
