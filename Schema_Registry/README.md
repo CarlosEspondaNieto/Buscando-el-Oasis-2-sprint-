@@ -5,7 +5,7 @@ Proporciona serializadores que se conectan a los clientes de Kafka para la recup
 
 * Estamos dando por hecho que ya tenemos todos nuestros servicios levantados, si no es el caso podemos consultar esto [Levantar servicios](https://github.com/CarlosEspondaNieto/Buscando-el-Oasis-2-sprint-/tree/Daniel/mongo-sink-connector)
 * En este proceso tenemos que  hacer dos sencillas configuraciones
-1. Cambiar la configuración  de schema-registry.properties que se encuentra en
+## 1. Cambiar la configuración  de schema-registry.properties que se encuentra en
  **/etc/schema-registry**
 ```
 listeners=http://0.0.0.0:8081
@@ -15,7 +15,7 @@ debug=false
 ```
 * Lo único qu etenemos qu eagregar son las IP's de nuestros nodos en **kafkastore.connection.url**
 
-2. Definir el esquema en avro
+## 2. Definir el esquema en avro
 * Éste es un ejemplo  de los registros 
 ```JSON
 {"ID":3,
