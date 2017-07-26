@@ -17,15 +17,15 @@ net:
 
 `sudo service mongod start`
 
--Verificar:
+- Verificar:
 
 `sudo cat /var/log/mongodb/mongod.log`
 
--Inciar el mongo shell
+- Inciar el mongo shell
 
 `mongo`
 
--Crear base de datos Ninja_Turtles y colección Ninja_Turtles con un registro y verificar
+- Crear base de datos Ninja_Turtles y colección Ninja_Turtles con un registro y verificar
 
 ```
 use Ninja_Turtles
