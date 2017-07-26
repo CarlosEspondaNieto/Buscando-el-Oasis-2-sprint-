@@ -27,7 +27,7 @@ net:
 
 - Crear base de datos Ninja_Turtles y colección Ninja_Turtles con un registro y verificar
 
-```
+```mongo
 use Ninja_Turtles
 db.Ninja_Turtles.insertOne({"name":"tortuga marina"})
 db.Ninja_Turtles.find()
