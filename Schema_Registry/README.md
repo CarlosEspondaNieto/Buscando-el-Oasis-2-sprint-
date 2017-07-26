@@ -1,6 +1,6 @@
 # SCHEMA REGISTRY
-* Qué es schema registry
-Es una herramienta que nos permite almacenar y recuperar esquemas Avro, almacenando un historial de las versiones  de todos los esquemas, además proporciona multiples configuraciones de compatibilidad por si fuera poco permite la evolución de los esquemas de acuerdo a la configuración de compatibilidad.
+## Qué es schema registry
+* Es una herramienta que nos permite almacenar y recuperar esquemas Avro, almacenando un historial de las versiones  de todos los esquemas, además proporciona multiples configuraciones de compatibilidad por si fuera poco permite la evolución de los esquemas de acuerdo a la configuración de compatibilidad.
 Proporciona serializadores que se conectan a los clientes de Kafka para la recuperación y almacenamiento de mensajes de Kafka que se envian en formato Avro.
 
 *Estamos dando por hecho que ya tenemos todos nuestros servicios levantados, si no es el caso podemos consultar esto [Levantar servicios](https://github.com/CarlosEspondaNieto/Buscando-el-Oasis-2-sprint-/tree/Daniel/mongo-sink-connector)
