@@ -21,3 +21,15 @@ net:
 
 `sudo cat /var/log/mongodb/mongod.log`
 
+-Inciar el mongo shell
+
+`mongo`
+
+-Crear base de datos Ninja_Turtles y colección Ninja_Turtles con un registro y verificar
+
+```
+use Ninja_Turtles
+db.Ninja_Turtles.insertOne({"name":"tortuga marina"})
+db.Ninja_Turtles.find()
+
+```
