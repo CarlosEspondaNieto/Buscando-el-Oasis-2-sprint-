@@ -1,7 +1,7 @@
 # SCHEMA REGISTRY
 Estamos dando por hecho que ya tenemos todos nuestros servicios levantados, si no es el caso podemos consultar esto [Levantar servicios](https://github.com/CarlosEspondaNieto/Buscando-el-Oasis-2-sprint-/tree/Daniel/mongo-sink-connector)
 * En este proceso tenemos que  hacer dos sencillas configuraciones
-1. Cambiar el archivo de configuración en schema-registry.properties que se encuentra en
+1. Cambiar la configuración  de schema-registry.properties que se encuentra en
  **/etc/schema-registry**
 ```
 listeners=http://0.0.0.0:8081
@@ -30,7 +30,7 @@ debug=false
 {"type":"record","name":"myrecord","fields":[ 
 {"name":"ID","type":"int"}, 
 {"name":"name", "type": "string"},
-{"name":"last_name", "type": "string","aliases" : ["last-name"]},
+{"name":"last_name", "type": "string",
 {"name":"age", "type": "int"},
 {"name":"hobbies","type": {"type": "array", "items": "string"}}
 ,
@@ -53,7 +53,7 @@ debug=false
  --property value.schema='{"type":"record","name":"myrecord","fields":[ 
 {"name":"ID","type":"int"}, 
 {"name":"name", "type": "string"},
-{"name":"last_name", "type": "string","aliases" : ["last-name"]},
+{"name":"last_name", "type": "string"},
 {"name":"age", "type": "int"},
 {"name":"hobbies","type": {"type": "array", "items": "string"}}
 ,
@@ -69,3 +69,5 @@ debug=false
 }
 ]}'
 ```
+* Tabién podemos hacer uso de una herramienta Online de JSONtoAVRO
+[Herramienta Online](http://avro4s-ui.landoop.com/)
