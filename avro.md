@@ -18,3 +18,4 @@ El esquema o formato puede evolucionar  y también avro permite eso.
 Para mas información consultar la documentacion en la página de: [Avro](https://avro.apache.org/docs/1.7.7/)
 
 
+[Avro tools. convertir de json a avro y viceversa](http://www.michael-noll.com/blog/2013/03/17/reading-and-writing-avro-files-from-the-command-line/)
