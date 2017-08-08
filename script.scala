@@ -10,19 +10,19 @@ val df = (sqlContext.read
 	.option("delimiter", "|") 
 	.option("header", "false")
 	.option("inferSchema", "true")
-	.load("hdfs://localhost:9000/landing_zone/teradata/beeva_moock_data1.csv")
-	.write.avro("/raw/beeva_")) //Se guarda en formato avro en local
+	.load("hdfs://carlos:9000/landing_zone/teradata/beeva_moock_data1.csv")
+	.write.avro("hdfs://carlos:9000/raw/file.avro")) //Se guarda en formato avro en local
 
+val df2 = sqlContext.read.avro("hdfs://carlos:9000/raw/file.avro")
 
 
 //También se puede guardar en HDFS
 //df.write.avro("hdfs://localhost:9000/carlos/beeva_data")
+println("Imprimiendo esquema: \n")
+df2.printSchema() // Para ver el esquema de la información
+println("Imprimiendo el primer registro: \n")
+df2.first() // Para ver los primeros 20 registros
+println("Imprimiendo conteo de registros: \n")
+df2.count() // Para contar los registros
 
-//df.printSchema() // Para ver el esquema de la información
-//df.show() // Para ver los primeros 20 registros
-
-//df.count() // Para contar los registros
-
-System.exit(0)
-
-
+//System.exit(0)
